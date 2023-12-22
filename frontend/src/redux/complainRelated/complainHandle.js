@@ -20,3 +20,4 @@ export const getAllComplains = (id, address) => async (dispatch) => {
         dispatch(getError(error));
     }
 }
+
