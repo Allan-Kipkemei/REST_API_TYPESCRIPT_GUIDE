@@ -32,6 +32,70 @@ const subjectCreate = async (req, res) => {
     }
 };
 
+// const subjectCreate = async (req, res) => {
+//     const subjects = req.body.subjects.map((subject) => ({
+//         subName: subject.subName,
+//         subCode: subject.subCode,
+//         sessions: subject.sessions,
+//     }));
+
+//     try {
+//         const existingSubjectBySubCode = await Subject.findOne({
+//             'subjects.subCode': subjects[0].subCode,
+//             school: req.body.adminID,
+//         });
+
+//         if (existingSubjectBySubCode) {
+//             res.send({ message: 'Sorry, this subcode must be unique as it already exists' });
+//         } else {
+//             const newSubjects = subjects.map((subject) => ({
+//                 ...subject,
+//                 sclassName: req.body.sclassName,
+//                 school: req.body.adminID,
+//             }));
+
+//             const result = await Subject.insertMany(newSubjects);
+//             res.send(result);
+//         }
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// };
+
+// // Alternatively, using .catch():
+
+// const subjectCreate = async (req, res) => {
+//     const subjects = req.body.subjects.map((subject) => ({
+//         subName: subject.subName,
+//         subCode: subject.subCode,
+//         sessions: subject.sessions,
+//     }));
+
+//     const existingSubjectBySubCode = await Subject.findOne({
+//         'subjects.subCode': subjects[0].subCode,
+//         school: req.body.adminID,
+//     });
+
+//     if (existingSubjectBySubCode) {
+//         res.send({ message: 'Sorry, this subcode must be unique as it already exists' });
+//     } else {
+//         const newSubjects = subjects.map((subject) => ({
+//             ...subject,
+//             sclassName: req.body.sclassName,
+//             school: req.body.adminID,
+//         }));
+
+//         const result = await Subject.insertMany(newSubjects)
+//             .then((result) => {
+//                 res.send(result);
+//             })
+//             .catch((err) => {
+//                 res.status(500).json(err);
+//             });
+//     }
+// };
+
+
 const allSubjects = async (req, res) => {
     try {
         let subjects = await Subject.find({ school: req.params.id })
