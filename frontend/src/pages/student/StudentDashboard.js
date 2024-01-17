@@ -53,7 +53,7 @@ const StudentDashboard = () => {
                             sx={{ flexGrow: 1 }}
                         >
                             Student Dashboard
-                        </Typography>
+                        </Typography>   
                         <AccountMenu />
                     </Toolbar>
                 </AppBar>

@@ -13,6 +13,7 @@ import {
     getError,
 } from './userSlice';
 
+//login route 
 export const loginUser = (fields, role) => async (dispatch) => {
     dispatch(authRequest());
 

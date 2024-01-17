@@ -6,9 +6,11 @@ const teacherRegister = async (req, res) => {
     const { name, email, password, role, school, teachSubject, teachSclass } = req.body;
     try {
         const salt = await bcrypt.genSalt(10);
-        const hashedPass = await bcrypt.hash(password, salt);
 
-        const teacher = new Teacher({ name, email, password: hashedPass, role, school, teachSubject, teachSclass });
+        console.log(salt);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
+        const teacher = new Teacher({ name, email, password: hashedPassword, role, school, teachSubject, teachSclass });
 
         const existingTeacherByEmail = await Teacher.findOne({ email });
 

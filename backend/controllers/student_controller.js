@@ -5,10 +5,14 @@ const Subject = require('../models/subjectSchema.js');
 
 // Function to register a new student
 const studentRegister = async (req, res) => {
+
+
     try {
+
+        const { password  } = req.body;
         // Generate a salt and hash the password
         const salt = await bcrypt.genSalt(10);
-        const hashedPass = await bcrypt.hash(req.body.password, salt);
+        const hashedPass = await bcrypt.hash(password, salt);
 
         // Check if a student with the same roll number, school, and class already exists
         const existingStudent = await Student.findOne({
